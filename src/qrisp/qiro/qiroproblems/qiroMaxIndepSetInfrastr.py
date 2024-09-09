@@ -40,10 +40,11 @@ def create_maxIndep_replacement_routine( res, Graph, solutions= [], exclusions= 
 
     # FOR SINGLE QUBIT CORRELATIONS
     orig_nodes = list(Graph.nodes())
+    newGraph = copy.deepcopy(Graph)
     
     max_item = []
     max_item, sign = find_max(orig_nodes, orig_edges , res, solutions)
-    newGraph = copy.deepcopy(Graph)
+    
 
     # we just directly remove vertices from the graph 
     if isinstance(max_item, int):
@@ -69,6 +70,7 @@ def create_maxIndep_replacement_routine( res, Graph, solutions= [], exclusions= 
             exclusions += intersect 
 
     return newGraph, solutions, sign, exclusions
+    
 
 
 def create_maxIndep_cost_operator_reduced(Graph, solutions= []):
